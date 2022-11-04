@@ -1,0 +1,17 @@
+{{ define "main" }}
+<ul >
+  {{- range .Pages -}}
+  {{- range .Pages -}}
+  {{- range .Pages -}}
+  {{ $img_twitter := .Resources.GetMatch "twitter_card_image.webp" }}
+  {{ if $img_twitter }}
+    <li >
+       <p>{{ .Params.author }}</p>
+       <a href="{{ .Permalink }}">{{ .Params.quote }}</a>
+    </li>
+  {{ end }}
+    {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  </ul>
+{{ end }}

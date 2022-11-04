@@ -1,0 +1,25 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<channel>
+<title>{{ .Title }}</title>
+<link>{{ .Permalink }}</link>
+<description>{{ .Description }}</description>
+<language>en-us</language>
+<atom:link href="{{ .Permalink }}index.xml" rel="self" type="application/rss+xml"/>
+
+  {{- range .Pages -}}
+
+  {{ $img_pinterest := .Resources.GetMatch "pinterest_card_image.jpg" }}
+  
+    <item>
+    <title>{{ .Title }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>{{ .Description }}</description>
+    {{ if $img_pinterest }}<image>{{ $img_pinterest.Permalink }}</image>{{ end }}
+  </item>
+  
+
+  {{- end -}}
+
+</channel>
+</rss>
+

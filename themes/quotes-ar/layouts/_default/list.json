@@ -1,0 +1,14 @@
+{{ $result := newScratch }}
+{{ $result.Set "quotes" slice }}
+  {{- range .Pages -}}
+  {{- range .Pages -}}
+  {{- range .Pages -}}
+  {{ $img_twitter := .Resources.GetMatch "twitter_card_image.webp" }}
+  {{ if $img_twitter }}
+    {{ $result.Add "quotes" ( dict "url" .Permalink "img" $img_twitter.Permalink "text" .Params.quote) }}
+  {{ end }}
+    {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{ $d :=  $result.Get "quotes" }}
+{{ first 4 (shuffle $d) | jsonify }}

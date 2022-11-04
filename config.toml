@@ -1,0 +1,5 @@
+baseURL = "https://ar.quotes.quotesandsayings.net/"
+languageCode = "ar"
+title = "أقوال و اقتباسات"
+theme = "quotes-ar"
+paginate = 30

@@ -1,0 +1,76 @@
+{{ $img_twitter := .Resources.GetMatch "twitter_card_image.webp" }}
+{{ $img_og := .Resources.GetMatch "og_card_image.jpg" }}
+{{ $image := .Resources.GetMatch "author_img.webp" }}
+<head>
+    <meta name="robots" content="all">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ with .Keywords }}<meta name="keywords" content="{{ . }}">{{ end }}
+    <title>{{ .Title }}</title>
+    <meta name="description" content="{{ .Description }}">
+    <meta name="author" content="{{ .Params.author }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    
+    
+    
+    <meta property="og:title" content="{{ .Title }}" />
+    <meta property="og:description" content="{{ .Description }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    {{ with $img_og }}
+    <meta name="image" property="og:image" content="{{ $img_og.Permalink }}" />
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="{{ $img_og.Width }}">
+    <meta property="og:image:height" content="{{ $img_og.Height }}">
+    {{ end }}
+    <meta property="og:site_name" content="Quotes abd Sayings" />
+    <meta property="og:locale" content="{{ .Site.Language.Lang }}" />
+    {{ if eq .Permalink .Site.BaseURL }}
+    <meta property="og:type" content="website" />
+    {{ else }}
+    <meta property="og:type" content="article" />
+    {{ end }}
+    
+    
+    
+    <meta name="twitter:title" content="{{ .Title }}">
+    <meta name="twitter:description" content="{{ .Description }}">
+    {{ if $img_twitter }}
+    <meta name="twitter:image" content="{{ $img_twitter.Permalink }}">
+    <meta name="twitter:image:alt" content="{{ .Description }}">
+    {{ end }}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@q_and_s_net">
+    <meta name="twitter:creator" content="@q_and_s_net">
+    
+    
+    
+
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+    {{ $rlink := "" }}
+    {{ if (eq (substr (.Site.BaseURL | relLangURL) -1) "/") }}{{ $rlink = (.Site.BaseURL | relLangURL) }}{{ else }}{{ $rlink = print (.Site.BaseURL | relLangURL) "/" }}{{ end }}
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    {{ if eq (.Permalink | relURL) $rlink }}
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+
+    {{ if eq (.Permalink | relURL) "/ar/" }}
+    <script src='{{ "/js/lunr-languages/lunr.stemmer.support.min.js" | relURL }}'></script>
+    <script src='{{ "/js/lunr-languages/lunr.ar.min.js" | relURL }}'></script>
+    {{ end }}
+    {{ end }}
+
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NL2F2F6');</script>
+    <!-- End Google Tag Manager -->   
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3610150616518651"
+     crossorigin="anonymous"></script>
+</head>
