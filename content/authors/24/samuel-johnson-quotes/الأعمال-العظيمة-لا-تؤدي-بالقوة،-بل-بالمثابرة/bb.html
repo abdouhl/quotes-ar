@@ -1,0 +1,71 @@
+<!doctype html>
+<html dir="rtl">
+
+<head>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="html2canvas.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Almarai&display=swap" rel="stylesheet">
+</head>
+
+<body> <div id="quote" class="w-[1110px] text-white  text-center -mt-4 pb-12" style="font-size: 128px;font-family: 'Almarai', sans-serif;"> <p>"الأعمال العظيمة لا تؤدي بالقوة، بل بالمثابرة."</p> </div>
+<div class="w-[3330px] text-white " style="font-size: 58px;font-family: 'Almarai', sans-serif;"> <p  id="author" class="w-fit -mt-8 pb-8">»»—— صموئيل جونسون ——««</p> </div>  
+
+<button>Run html2canvas</button>
+<button id='b2'>html2canvas</button>
+
+<script>
+var text_size = 128
+var quote = document.getElementById("quote")
+while (quote.clientHeight > 948) {
+text_size = text_size - 1
+ quote.style.setProperty("font-size",text_size+"px")
+}
+
+    
+
+
+window.scrollTo(0, 0)
+var node = document.getElementById('quote');
+  html2canvas(node, { backgroundColor: null, allowTaint: false, useCORS: true, scrollY: -window.scrollY, }).then(function (canvas) {
+    document.body.appendChild(canvas);
+  });
+ var node1 = document.getElementById('author');
+  html2canvas(node1, { backgroundColor: null, allowTaint: false, useCORS: true, scrollY: -window.scrollY, }).then(function (canvas) {
+    document.body.appendChild(canvas);
+  });
+
+  
+  
+document.querySelector("button").addEventListener("click", function () {    
+var canvas = document.getElementsByTagName("canvas")[0];
+// Convert the canvas to data
+var image = canvas.toDataURL();
+// Create a link
+var aDownloadLink = document.createElement('a');
+// Add the name of the file to the link
+aDownloadLink.download = "quote.png";
+// Attach the data to the link
+aDownloadLink.href = image;
+// Get the code to click the download link
+aDownloadLink.click();
+
+}, false);
+document.getElementsByTagName("button")[1].addEventListener("click", function () {   
+var canvas1 = document.getElementsByTagName("canvas")[1];
+// Convert the canvas to data
+var image1 = canvas1.toDataURL();
+// Create a link
+var aDownloadLink1 = document.createElement('a');
+// Add the name of the file to the link
+aDownloadLink1.download = "author.png";
+// Attach the data to the link
+aDownloadLink1.href = image1;
+// Get the code to click the download link
+aDownloadLink1.click();
+
+}, false);
+
+
+</script></body></html>
