@@ -6,7 +6,7 @@
 <div id="quotes-div" class="bg-white mt-8 container mx-auto border-2 rounded-md grid place-items-center w-full">
 <div class="p-4 w-full">
 <div class="flex items-center justify-start w-full mb-6">
-<h3 class="font-bold text-2xl pb-2 text-slate-500">Popular Quotes</h3>
+<h3 class="font-bold text-2xl pb-2 text-slate-500">أشهر الأقوال</h3>
 </div>
 <div class=" grid w-full" >
 {{ $paginator := .Paginate (shuffle ( .Site.RegularPages ))}}
@@ -28,22 +28,23 @@
 <div class="w-full inline-flex items-center bg-gradient-to-b from-white via-slate-300 to-slate-400 rounded-b-md">
     <div class="inline-flex items-center pt-6 px-3 text-sm font-medium text-center text-white mx-auto mb-2">
             {{ if $paginator.HasPrev }}
-            <a href="{{ $paginator.Prev.URL }}"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+            <a href="{{ $paginator.Prev.URL }}"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
 </svg></a>
             {{ end }}
     
             <a class="bold" href="{{ .Permalink }}">{{ $paginator.PageNumber }} </a>
             
             {{ if $paginator.HasNext }}
-            <a href="{{ $paginator.Next.URL }}"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+            <a href="{{ $paginator.Next.URL }}"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
 </svg></a>
             {{ end }}
         </div>
     </div>
 </div>
 <script>
+
 var $grid = $('.grid').masonry({
   itemSelector: '.grid-item'
 });
@@ -53,6 +54,7 @@ $grid.imagesLoaded().progress( function() {
   $('#quotes-div').removeAttr( 'style' );
   $('#social-section').removeAttr( 'style' );
 });
-
+$('#quotes-div').removeAttr( 'style' );
+$('#social-section').removeAttr( 'style' );
 </script>
 {{ end }}
